@@ -36,7 +36,7 @@ export function LoginFormComponent() {
         <div className="flex justify-center mb-6">
           <div className="relative w-32 h-32">
             <Image
-              src="/logo.png"
+              src="/logo.png?height=128&width=128"
               alt="Company Logo"
               layout="fill"
               objectFit="contain" />
