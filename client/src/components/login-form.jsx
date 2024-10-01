@@ -8,6 +8,7 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Alert, AlertDescription } from "@/components/ui/alert"
+import Link from 'next/link'
 
 const LoginSchema = Yup.object().shape({
   email: Yup.string().email('Invalid email').required('Email is required'),
@@ -76,6 +77,8 @@ export function LoginFormComponent() {
             )}
           </div>
           <Button type="submit" className="w-full bg-primary hover:bg-primary/90">Login</Button>
+          <p className='text-center'>Don't have an account? <Link href="/register" className='text-gray-700'> Register</Link> instead.</p>
+
         </form>
       </CardContent>
     </Card>)

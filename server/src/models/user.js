@@ -3,9 +3,10 @@ const mongoose = require("mongoose");
 const User = mongoose.model('User', {
     fullName: String,
     email: String,
+    phoneNumber: String,
     gender: {
       type: String,
-      enum : ['Male', 'Female', 'Other'],
+      enum : ['Male', 'Female','Other'],
       default: 'Male'
     },
     dateOfBirth: String,

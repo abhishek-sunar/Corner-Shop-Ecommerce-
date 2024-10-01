@@ -9,6 +9,9 @@ import { Label } from "@/components/ui/label"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Alert, AlertDescription } from "@/components/ui/alert"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
+import Link from 'next/link'
+import axios from 'axios'
+
 
 const phoneRegExp = /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\$$[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$)/
 
@@ -39,11 +42,13 @@ export function RegisterFormComponent() {
     },
     validationSchema: RegisterSchema,
     onSubmit: (values) => {
-      // Handle form submission here
-      console.log(values)
+      handleSave(values)
     },
   })
 
+  const handleSave = async(values)=>{
+    const {data} = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/register`,values)
+  }
   return (
     (<Card className="w-full backdrop-blur-sm bg-white/70 shadow-xl">
       <CardHeader>
@@ -178,7 +183,8 @@ export function RegisterFormComponent() {
               </Alert>
             )}
           </div>
-          <Button type="submit" className="w-full bg-primary hover:bg-primary/90">Register</Button>
+          <Button type="submit" onChange="" className="w-full bg-primary hover:bg-primary/90">Register</Button>
+          <p className="text-center text-pretty">Already have an account?<Link href={"/"}> Sign In</Link> instead</p>
         </form>
       </CardContent>
     </Card>)
