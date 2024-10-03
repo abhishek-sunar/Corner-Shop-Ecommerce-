@@ -9,6 +9,7 @@ import { Label } from "@/components/ui/label"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Alert, AlertDescription } from "@/components/ui/alert"
 import Link from 'next/link'
+import axios from 'axios'
 
 const LoginSchema = Yup.object().shape({
   email: Yup.string().email('Invalid email').required('Email is required'),
@@ -24,9 +25,13 @@ export function LoginFormComponent() {
     validationSchema: LoginSchema,
     onSubmit: (values) => {
       // Handle form submission here
-      console.log(values)
+      handleSave(values)
     },
   })
+
+  const handleSave = async (values)=>{
+    const {data} = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/`,values)
+  }
 
   return (
     (<Card className="w-full backdrop-blur-sm bg-white/70 shadow-xl">
