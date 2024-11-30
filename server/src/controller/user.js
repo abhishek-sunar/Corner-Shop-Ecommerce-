@@ -24,7 +24,8 @@ const loginUser = async (req, res) => {
     const isMatched = await bcrypt.compare(req.body.password, user.password);
     if(isMatched){
      const  token = jwt.sign({ email: req.body.email }, process.env.SECRET_KEY);
-     res.send({user,token,isLoggedIn: true})
+     const newUser = user.toObject()  
+     res.send({user: newUser,token,isLoggedIn: true})
     }else{
      res.status(401).send({msg: 'incorrect password'})
     }
