@@ -14,7 +14,7 @@ app.use(express.json())
 app.use(cors())
 app.use(UserRoute)
 app.use(ProductRoute)
-app,use(CategoryRoute)
+app.use(CategoryRoute)
 
 app.listen(port, ()=>{
     console.log("server is started in port" +" "+ port)

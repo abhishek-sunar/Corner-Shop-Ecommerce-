@@ -1,6 +1,7 @@
 const Category = require("../models/category")
 const createCategory = async(req, res) => {
-    Product.create(req.body)
+    Category.create(req.body)
+    Category.bulkSave()
     res.send("Category created!!")
   }
 

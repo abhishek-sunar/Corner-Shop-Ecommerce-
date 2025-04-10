@@ -21,7 +21,6 @@ const LoginSchema = Yup.object().shape({
 export default function LoginFormComponent() {
   const router = useRouter()
   const [loginError, setLoginError] = useState(null)
-
   const formik = useFormik({
     initialValues: {
       email: '',
@@ -119,7 +118,7 @@ export default function LoginFormComponent() {
             {formik.isSubmitting ? 'Logging in...' : 'Login'}
           </Button>
           <p className='text-center'>
-            Don&apos;t have an account?{' '}
+            Don't have an account?{' '}
             <Link href="/register" className='text-primary hover:underline'>
               Register
             </Link>{' '}
